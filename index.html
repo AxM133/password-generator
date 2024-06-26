@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор паролей</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="title">
+                <h1>Генератор паролей</h1>
+                <button id="infoBtn" class="btn btn__secondary"><p>Информация</p></button>
+            </div>
+            <div class="settings">
+                <label for="length">Длина пароля:</label>
+                <input type="number" id="length" min="1" max="100" value="12" class="form__input">
+
+                <div class="checkbox">
+                    <div class="checkbox__1">
+                        <input id="numbers" type="checkbox">
+                        <label for="numbers">
+                            <i class="material-icons">pin</i>
+                        </label>
+                    </div>
+                    <div class="checkbox__1">
+                        <input id="uppercaseLat" type="checkbox">
+                        <label for="uppercaseLat">
+                            <i class="material-icons">title vertical_align_top</i>
+                        </label>
+                    </div>
+                    <div class="checkbox__1">
+                        <input id="lowercaseLat" type="checkbox">
+                        <label for="lowercaseLat">
+                            <i class="material-icons">title vertical_align_bottom</i>
+                        </label>
+                    </div>
+                    <div class="checkbox__1">
+                        <input id="uppercaseCyr" type="checkbox">
+                        <label for="uppercaseCyr">
+                            <i class="material-icons">language vertical_align_top</i>
+                        </label>
+                    </div>
+                    <div class="checkbox__1">
+                        <input id="lowercaseCyr" type="checkbox">
+                        <label for="lowercaseCyr">
+                            <i class="material-icons">language vertical_align_bottom</i>
+                        </label>
+                    </div>
+                    <div class="checkbox__1">
+                        <input id="specialChars" type="checkbox">
+                        <label for="specialChars">
+                            <i class="material-icons">emoji_symbols</i>
+                        </label>
+                    </div>
+                    <div class="checkbox__1">
+                        <input id="extraChars" type="checkbox">
+                        <label for="extraChars">
+                            <i class="material-icons">more_horiz</i>
+                        </label>
+                    </div>
+                </div>
+
+                <label for="firstChar">Первый символ:</label>
+                <select id="firstChar" class="form__input">
+                    <option value="any">Любой</option>
+                    <option value="letter">Буква</option>
+                    <option value="number">Цифра</option>
+                </select>
+            </div>
+            
+            <div class="btn btn__primary" id="generateBtn"><p>Сгенерировать</p></div>
+
+            <div class="password-display">
+                <input type="text" id="generatedPassword" readonly class="generated-password-input">
+                <div class="btn btn__secondary" id="copyBtn"><p>Копировать</p></div>
+            </div>
+        </div>
+
+        <div class="history-container">
+            <h2>История паролей <span id="clearHistoryBtn" class="material-icons">delete</span></h2>
+            <ul id="passwordHistory" class="neumorphism-list"></ul>
+        </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Информация о управлении</h2>
+            <div class="modal-info">
+                <div class="info-item">
+                    <i class="material-icons">straighten</i>
+                    <p><strong>Длина пароля:</strong> Установите желаемую длину пароля с помощью числового ввода.</p>
+                </div>
+                <div class="info-item">
+                    <i class="material-icons">check_box</i>
+                    <p><strong>Выбор символов:</strong> Выберите типы символов, которые хотите включить в пароль (цифры, заглавные и строчные латинские и кириллические буквы, специальные и дополнительные символы).</p>
+                </div>
+                <div class="info-item">
+                    <i class="material-icons">first_page</i>
+                    <p><strong>Первый символ:</strong> Установите первый символ пароля (любой, буква или цифра).</p>
+                </div>
+                <div class="info-item">
+                    <i class="material-icons">autorenew</i>
+                    <p><strong>Генерация пароля:</strong> Нажмите кнопку "Сгенерировать", чтобы создать новый пароль на основе выбранных параметров.</p>
+                </div>
+                <div class="info-item">
+                    <i class="material-icons">content_copy</i>
+                    <p><strong>Копирование пароля:</strong> Нажмите кнопку "Копировать", чтобы скопировать сгенерированный пароль в буфер обмена.</p>
+                </div>
+                <div class="info-item">
+                    <i class="material-icons">history</i>
+                    <p><strong>История паролей:</strong> Все сгенерированные пароли будут сохраняться в истории. Вы можете очистить историю, нажав на иконку корзины.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
